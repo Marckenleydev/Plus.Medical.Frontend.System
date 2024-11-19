@@ -14,8 +14,8 @@ export const isJsonContentType = (headers: Headers)=>
             'application/form-data'].includes(headers.get('content-type')?.trimEnd() || '');
 
 
- export const processResponse = <T>(response: IResponse<T>, meta:unknown, arg: unknown): IResponse<T> =>{
-    const {request} = meta;
+ export const processResponse = <T>(response: IResponse<T>, meta:unknown): IResponse<T> =>{
+   const { request } = meta as { request: Request };
     if(request.url.includes('logout')){localStorage.removeItem(Key.LOGGEDIN);}
 
     if(!request.url.includes('profile')){
@@ -27,7 +27,8 @@ export const isJsonContentType = (headers: Headers)=>
  }
 
 
- export const processError = (error: {status:number; data:IResponse<void>}, meta: unknown, arg:unknown):{status:number; data:IResponse<void>}=>{
+ // eslint-disable-next-line @typescript-eslint/no-unused-vars
+ export const processError = (error: {status:number; data:IResponse<void>}, _meta: unknown):{status:number; data:IResponse<void>}=>{
 
     if(error.data.code === 401 && error.data.status ==="UNAUTHORIZED" && error.data.message === "You are not logged in"){
         localStorage.setItem(Key.LOGGEDIN,"false");

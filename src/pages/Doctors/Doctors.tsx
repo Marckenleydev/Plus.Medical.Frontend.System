@@ -12,7 +12,7 @@ function Doctors() {
     window.scrollTo(0, 0);
   }, []);
   const [query, setQuery] = React.useState<Query>({ page: 0, size: 4, name: '' });
-  const { data: doctorData, error, isSuccess, isLoading, refetch } = doctorAPI.useFetchDoctorsQuery(query);
+  const { data: doctorData,  isSuccess, isLoading } = doctorAPI.useFetchDoctorsQuery(query);
 
   // const goToPage = (direction: string) => {
   //   if (direction === 'back') {

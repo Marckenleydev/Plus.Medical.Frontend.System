@@ -16,6 +16,8 @@ export const doctorAPI = createApi({
     baseQuery: fetchBaseQuery({baseUrl, credentials: 'include', isJsonContentType}),
     tagTypes: ['Doctors'],
     endpoints: (builder)=>({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         fetchDoctors: builder.query<IResponse<Page>, Query>({
             query: (query)=>({
                 url: `/search?page=${query.page}&size=${query.size}&name=${query.name}`,
@@ -23,6 +25,7 @@ export const doctorAPI = createApi({
             }),
       
             transformErrorResponse: processError,
+            
             providesTags: (result, error)=> ['Doctors']
         }),
 

@@ -17,6 +17,8 @@ export const medicalServiceAPI = createApi({
     baseQuery: fetchBaseQuery({baseUrl, credentials: 'include', isJsonContentType}),
     tagTypes: ['MedicalServices'],
     endpoints: (builder)=>({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         fetchMedicalServices: builder.query<IResponse<Page>, Query>({
             query: (query)=>({
                 url: `?page=${query.page}&size=${query.size}`,
@@ -24,7 +26,7 @@ export const medicalServiceAPI = createApi({
             }),
       
             transformErrorResponse: processError,
-            providesTags: (result, error)=> ['MedicalServices']
+            providesTags: ()=> ['MedicalServices']
         }),
 
  
@@ -36,7 +38,7 @@ export const medicalServiceAPI = createApi({
              
             }),
             transformErrorResponse: processError,
-            providesTags: (result, error)=> ['MedicalServices']
+            providesTags: ()=> ['MedicalServices']
            
         }),
 

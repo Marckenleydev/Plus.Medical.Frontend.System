@@ -1,6 +1,7 @@
 
 
 export interface IPage<T> {
+    doctors: unknown;
     content: T[];
     pageable: {
         sort: {

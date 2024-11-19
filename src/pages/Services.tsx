@@ -10,7 +10,7 @@ function Services() {
     window.scrollTo(0, 0);
   }, []);
   const [query, setQuery] = React.useState<Query>({ page: 0, size: 6 });
-  const { data, error, isSuccess, isLoading, refetch } = medicalServiceAPI.useFetchMedicalServicesQuery(query);
+  const { data,  isSuccess, isLoading } = medicalServiceAPI.useFetchMedicalServicesQuery(query);
 
   // const goToPage = (direction: string) => {
   //   if (direction === 'back') {

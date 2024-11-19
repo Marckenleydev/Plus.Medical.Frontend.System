@@ -8,5 +8,6 @@ export interface ISpecialisation {
     name: string
   }
 
-  export type Specialisation ={specialisation: ISpecialisation};
-  export type Specialisations = {specialisations: ISpecialisation[]};
+  export type Specialisation = ISpecialisation;
+  export type Specialisations = ISpecialisation[];
+  

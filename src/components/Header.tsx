@@ -3,7 +3,6 @@ import logo from '../assets/images/logo.png';
 import { BiMenu } from "react-icons/bi";
 import { useEffect, useRef } from 'react';
 import { patientAPI } from '../services/PatientService';
-import { toastError } from '../services/ToastService';
 import { isTokenExpired, removeToken } from '../utils/requestutils';
 import { Key } from '../assets/enum/cache.key';
 
@@ -29,8 +28,8 @@ const navLinks =[
 const  Header=()=> {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
-  const { data: user, error, isLoading, refetch } = patientAPI.useFetchPatientQuery();
-  const [logoutPatient, { data, error:errorLogout, isLoading:loadingLogout, isSuccess }] = patientAPI.useLogoutPatientMutation();
+  const { data: user, isLoading,  } = patientAPI.useFetchPatientQuery();
+  const [logoutPatient, {  isLoading:loadingLogout,  }] = patientAPI.useLogoutPatientMutation();
   const navigate = useNavigate();
 
   useEffect(() => {

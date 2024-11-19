@@ -6,7 +6,7 @@ import { BsArrowRight } from "react-icons/bs"
 const DoctorCard = ({doctor}) => {
 
     
-    const {firstName,lastName,totalRating,rating = "0", image_Url,doctorId, specialisation,totalPatients}= doctor
+    const {firstName,totalRating,rating = "0", image_Url,doctorId, specialisation,totalPatients}= doctor
      // Convert rating to a number
   const numericRating = parseFloat(rating);
   return (

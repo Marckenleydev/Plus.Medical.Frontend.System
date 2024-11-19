@@ -13,7 +13,7 @@ const ResetPassword = () => {
     const location = useLocation();
     const isLoggedIn: boolean = (JSON.parse(localStorage.getItem(Key.LOGGEDIN)!) as boolean) || false;
     const ResetPasswordSchema = z.object({email: z.string().min(2, "Email is required").email("Please enter a valid email") });
-    const { register, handleSubmit,reset, formState,getFieldState,} = useForm<EmailAddress>({resolver: zodResolver(ResetPasswordSchema), mode: "onTouched"});
+    const { register, handleSubmit,reset, formState} = useForm<EmailAddress>({resolver: zodResolver(ResetPasswordSchema), mode: "onTouched"});
     const [resetPassword,{data, error,isLoading, isSuccess}] = patientAPI.useResetPasswordMutation();
     
     const handleResetPassword = async(email: EmailAddress) =>{

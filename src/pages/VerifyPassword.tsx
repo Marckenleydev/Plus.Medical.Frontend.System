@@ -29,16 +29,16 @@ const VerifyPassword = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const key = searchParams.get("key");
-    const { register, handleSubmit,reset, formState,getFieldState,} = useForm<UpdateNewPassword>({resolver: zodResolver(schema), mode: "onTouched",});
+    const { register, handleSubmit,reset, formState} = useForm<UpdateNewPassword>({resolver: zodResolver(schema), mode: "onTouched",});
     const [verifyPassword,{  data, error, isLoading, isSuccess,},] = patientAPI.useVerifyPasswordMutation();
-    const [resetpassword,{data:resetData,error:resetError, isLoading:resetLoading, isSuccess:resetSuccess}] = patientAPI.useDoResetPasswordMutation();
+    const [resetpassword,{data:resetData,error:resetError,  isSuccess:resetSuccess}] = patientAPI.useDoResetPasswordMutation();
 
  
     const handleResetPassword = async(passwordRequest: UpdateNewPassword) => {
         await resetpassword(passwordRequest);
         reset();
     };
-    const isFieldValid = (fieldName: keyof UpdateNewPassword): boolean =>getFieldState(fieldName, formState).isTouched &&!getFieldState(fieldName, formState).invalid;
+    //const isFieldValid = (fieldName: keyof UpdateNewPassword): boolean =>getFieldState(fieldName, formState).isTouched &&!getFieldState(fieldName, formState).invalid;
     React.useEffect(() => {
       if (key && location.pathname.includes("/verify/password")) {
       
