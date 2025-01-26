@@ -3,7 +3,7 @@ import { IResponse } from '../models/IResponse';
 import { Key } from '../assets/enum/cache.key';
 import { toastError, toastSuccess } from '../services/ToastService';
 import Cookies from 'js-cookie';
-export const baseUrl="https://plusmedicalbackendsystem-production.up.railway.app/"
+export const baseUrl="https://plus-medical-backend-springboot.onrender.com/"
 
 export const isJsonContentType = (headers: Headers)=>
      [

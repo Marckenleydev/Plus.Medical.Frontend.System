@@ -5,7 +5,7 @@ import { Http } from "../assets/enum/http.method";
 import {   isJsonContentType, processError, processResponse } from "../utils/requestutils";
 import { EmailAddress, IPatientRequest, IRegisterRequest, UpdateNewPassword, UpdatePassword } from "../assets/model/ICredentials";
 
-const baseUrl = "https://plusmedicalbackendsystem-production.up.railway.app/";
+const baseUrl = "https://plus-medical-backend-springboot.onrender.com/";
 
 export const patientAPI = createApi({
     reducerPath: 'patientAPI',

@@ -4,7 +4,7 @@ import { Http } from "../assets/enum/http.method";
 import { IResponse } from "../models/IResponse";
 import { FeedbackMessage } from "../assets/model/IFeedback";
 
-const baseUrl = "https://plusmedicalbackendsystem-production.up.railway.app/";
+const baseUrl = "https://plus-medical-backend-springboot.onrender.com/api/";
 
 export const feedbackAPI = createApi({
   reducerPath: 'feedbackAPI',

@@ -6,7 +6,7 @@ import { IResponse } from "../models/IResponse"
 import { IMessage, Message } from "../assets/model/IMessage";
 
 
-const baseUrl = "https://plusmedicalbackendsystem-production.up.railway.app/api/";
+const baseUrl = "https://plus-medical-backend-springboot.onrender.com/";
 
 
 export const messageAPI = createApi({

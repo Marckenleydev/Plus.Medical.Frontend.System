@@ -8,7 +8,7 @@ import { Doctor, Query } from "../assets/model/IDoctor"
 import { Http } from "../assets/enum/http.method"
 import { IResponse } from "../models/IResponse"
 
-const baseUrl = "https://plusmedicalbackendsystem-production.up.railway.app/users/doctors";
+const baseUrl = "https://plus-medical-backend-springboot.onrender.com/users/doctors";
 
 
 export const doctorAPI = createApi({

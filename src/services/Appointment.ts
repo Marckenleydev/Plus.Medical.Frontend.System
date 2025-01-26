@@ -4,7 +4,7 @@ import { Http } from "../assets/enum/http.method";
 import { IResponse } from "../models/IResponse";
 
 
-const baseUrl = "https://plusmedicalbackendsystem-production.up.railway.app/";
+const baseUrl = "https://plus-medical-backend-springboot.onrender.com//";
 
 export const appointmentAPI = createApi({
   reducerPath: 'appointmentAPI',

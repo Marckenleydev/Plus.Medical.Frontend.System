@@ -9,7 +9,7 @@ import { Http } from "../assets/enum/http.method"
 import { IResponse } from "../models/IResponse"
 import { MedicalService } from "../assets/model/IMedicalService"
 
-const baseUrl = "https://plusmedicalbackendsystem-production.up.railway.app/api/medicalservices";
+const baseUrl = "https://plus-medical-backend-springboot.onrender.com/api/medicalservices";
 
 
 export const medicalServiceAPI = createApi({
