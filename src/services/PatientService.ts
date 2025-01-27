@@ -19,9 +19,11 @@ export const patientAPI = createApi({
             }),
             keepUnusedDataFor:120,
             transformResponse: processResponse<Patient>,
-            // transformErrorResponse: processError,
+             transformErrorResponse: processError,
             providesTags: (result, error)=> ['Patient']
         }),
+
+       
 
         registerPatient: builder.mutation<IResponse<void>, IRegisterRequest>({
             query: (registerRequest)=>({

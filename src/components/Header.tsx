@@ -28,22 +28,20 @@ const navLinks =[
 const  Header=()=> {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
-  const { data: user, isLoading,  } = patientAPI.useFetchPatientQuery();
+  const isLogin = localStorage.getItem(Key.LOGGEDIN) === "true";
+  
+
+  // Conditionally call the API if logged in
+  const { data: user, isLoading } = isLogin ? patientAPI.useFetchPatientQuery() : { data: null, isLoading: false };
   const [logoutPatient, {  isLoading:loadingLogout,  }] = patientAPI.useLogoutPatientMutation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isTokenExpired()) {
-      removeToken();
-      localStorage.setItem(Key.LOGGEDIN, "false");
-   
-    }
-  }, [navigate]);
 
-  const handLogout =  async() => {
+  const handLogout =  () => {
     removeToken();
-  await logoutPatient();
-  window.location.reload();
+logoutPatient();
+window.location.reload();
+ 
   
 
 
@@ -105,7 +103,7 @@ const  Header=()=> {
      {user?.data?.patient.firstName || !user?.data?.patient.firstName == null ?
       <div className='flex gap-2 items-center'>
         <h2 className='  text-primaryColor font-[600] flex items-center justify-center'><span className='mr-2 font-[400]'>hello! </span>  {user?.data?.patient.firstName} </h2>
-       <button onClick={handLogout}  className='bg-primaryColor py-2 px-4 text-white font-[600] h-[42px] flex items-center justify-center rounded-[50px]'>{loadingLogout  ?  "loading..." : "Log Out"}</button> </div>  : <Link to="/login">
+       <button  onClick={handLogout}  className='bg-primaryColor py-2 px-4 text-white font-[600] h-[42px] flex items-center justify-center rounded-[50px]'>{loadingLogout  ?  "loading..." : "Log Out"}</button> </div>  : <Link to="/login">
           <button className='bg-primaryColor py-2 px-6 text-white font-[600] h-[42px] flex items-center justify-center rounded-[50px]'>{isLoading ?  "loading...":"Login"}</button>        
           </Link>}
 

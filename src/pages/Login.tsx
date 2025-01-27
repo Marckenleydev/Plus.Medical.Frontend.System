@@ -24,7 +24,7 @@ const loginSchema = z.object({
 function Login() {
   const location = useLocation();
   const isLoggedIn: boolean = (JSON.parse(localStorage.getItem(Key.LOGGEDIN)!) as boolean) || false;
-  const [loginUser, { data, error, isLoading, isSuccess }] = patientAPI.useLoginPatientMutation();
+  const [loginUser, {data, isLoading, isSuccess }] = patientAPI.useLoginPatientMutation();
   const { register, handleSubmit, reset, formState: form,  } = useForm<IPatientRequest>({
     resolver: zodResolver(loginSchema),
     mode: "onTouched",
@@ -33,21 +33,19 @@ function Login() {
 
   const handleLogin = (credentials: IPatientRequest) =>{
     loginUser(credentials);
+
     reset();
   } 
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    if (isSuccess) {
-      localStorage.setItem(Key.LOGGEDIN, "true");
-      window.location.reload();
-    }
-  }, [isSuccess]);
+ 
+  },);
 
     if (isLoggedIn) { return location?.state?.from?.pathname ? ( <Navigate to={location?.state?.from?.pathname} replace />) : (  <Navigate to={"/"} replace />);}
-    if (isSuccess ) {
+    if (isSuccess && data.status=="OK" ) {
       localStorage.setItem(Key.LOGGEDIN, "true");
-      // window.location.reload();
+       window.location.reload();
       return location?.state?.from?.pathname ?
        (  <Navigate to={location?.state?.from?.pathname} replace />) : (  <Navigate to={"/"} replace />);
       }

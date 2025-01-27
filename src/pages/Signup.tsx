@@ -41,6 +41,7 @@ patientAPI.useRegisterPatientMutation();
 
 const handleRegister = async (registerRequest: IRegisterRequest) => {
   await registerUser(registerRequest);
+  console.log(registerRequest)
   reset(); 
 };
 

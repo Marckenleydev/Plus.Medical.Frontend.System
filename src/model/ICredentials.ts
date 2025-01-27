@@ -6,9 +6,11 @@ export interface IPatientRequest {
     userType?:string;
 }
 
-export interface IRegisterRequest extends IPatientRequest {
+export interface IRegisterRequest {
     firstName:string;
     lastName:string;
+    email: string;
+    password:string;
     phone?:string;
     aboutMe?:string;
 }
